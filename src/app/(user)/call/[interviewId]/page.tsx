@@ -106,42 +106,26 @@ function InterviewInterface({ params }: Props) {
   }, [getInterviewById, resolvedParams.interviewId]);
 
   return (
-    <div>
-      <div className="hidden md:block p-8 mx-auto form-container">
-        {!interview ? (
-          interviewNotFound ? (
-            <PopUpMessage
-              title="链接无效"
-              description="您访问的面试链接无效，请检查链接是否正确后重试。"
-              image="/invalid-url.png"
-            />
-          ) : (
-            <PopupLoader />
-          )
-        ) : !isActive ? (
+    <div className="block p-2 md:p-8 mx-auto form-container">
+      {!interview ? (
+        interviewNotFound ? (
           <PopUpMessage
-            title="面试当前不可用"
-            description="该面试目前未开放，请联系面试发布方了解详情。"
-            image="/closed.png"
+            title="链接无效"
+            description="您访问的面试链接无效，请检查链接是否正确后重试。"
+            image="/invalid-url.png"
           />
         ) : (
-          <Call interview={interview} />
-        )}
-      </div>
-      <div className=" md:hidden flex flex-col items-center md:h-[0px] justify-center  my-auto">
-        <div className="mt-48 px-3">
-          <p className="text-center my-5 text-md font-semibold">{interview?.name}</p>
-          <p className="text-center text-gray-600 my-5">
-            请使用电脑参加面试，给您带来的不便敬请谅解。{" "}
-          </p>
-        </div>
-        <div className="text-center text-md font-semibold mr-2 my-5">
-          技术支持{" "}
-          <a className="font-bold underline" href="www.folo-up.co" target="_blank" rel="noreferrer">
-            Folo<span className="text-indigo-600">Up</span>
-          </a>
-        </div>
-      </div>
+          <PopupLoader />
+        )
+      ) : !isActive ? (
+        <PopUpMessage
+          title="面试当前不可用"
+          description="该面试目前未开放，请联系面试发布方了解详情。"
+          image="/closed.png"
+        />
+      ) : (
+        <Call interview={interview} />
+      )}
     </div>
   );
 }
