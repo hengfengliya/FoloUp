@@ -277,15 +277,15 @@ function EditInterview({ interview }: EditInterviewProps) {
             <input
               type="number"
               step="1"
-              max="5"
+              max="20"
               min={questions.length.toString()}
               className="border-2 text-center focus:outline-none  bg-slate-100 rounded-md border-gray-500 w-14 px-2 py-0.5 ml-3"
               value={numQuestions}
               onChange={(e) => {
                 let value = e.target.value;
                 if (value === "" || (Number.isInteger(Number(value)) && Number(value) > 0)) {
-                  if (Number(value) > 5) {
-                    value = "5";
+                  if (Number(value) > 20) {
+                    value = "20";
                   }
                   setNumQuestions(Number(value));
                 }
@@ -297,15 +297,15 @@ function EditInterview({ interview }: EditInterviewProps) {
             <input
               type="number"
               step="1"
-              max="10"
+              max="90"
               min="1"
               className="border-2 text-center focus:outline-none bg-slate-100 rounded-md border-gray-500 w-14 px-2 py-0.5 ml-3"
               value={Number(duration)}
               onChange={(e) => {
                 let value = e.target.value;
                 if (value === "" || (Number.isInteger(Number(value)) && Number(value) > 0)) {
-                  if (Number(value) > 10) {
-                    value = "10";
+                  if (Number(value) > 90) {
+                    value = "90";
                   }
                   setDuration(Number(value));
                 }
