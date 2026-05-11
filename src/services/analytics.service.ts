@@ -30,6 +30,7 @@ export const generateInterviewAnalytics = async (payload: {
 
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
+      baseURL: process.env.OPENAI_BASE_URL || undefined,
       maxRetries: 5,
       dangerouslyAllowBrowser: true,
     });
@@ -37,7 +38,7 @@ export const generateInterviewAnalytics = async (payload: {
     const prompt = getInterviewAnalyticsPrompt(interviewTranscript, mainInterviewQuestions);
 
     const baseCompletion = await openai.chat.completions.create({
-      model: "gpt-4o",
+      model: process.env.OPENAI_MODEL || "gpt-4o",
       messages: [
         {
           role: "system",

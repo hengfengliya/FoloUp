@@ -19,12 +19,13 @@ export async function POST(req: Request) {
 
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
+      baseURL: process.env.OPENAI_BASE_URL || undefined,
       maxRetries: 5,
       dangerouslyAllowBrowser: true,
     });
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o",
+      model: process.env.OPENAI_MODEL || "gpt-4o",
       messages: [
         {
           role: "system",
