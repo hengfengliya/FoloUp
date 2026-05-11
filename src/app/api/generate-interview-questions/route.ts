@@ -17,6 +17,7 @@ export async function POST(req: Request) {
   });
 
   try {
+    logger.info(`Calling model=${process.env.OPENAI_MODEL} baseURL=${process.env.OPENAI_BASE_URL}`);
     const baseCompletion = await openai.chat.completions.create({
       model: process.env.OPENAI_MODEL || "gpt-4o",
       messages: [
@@ -31,8 +32,9 @@ export async function POST(req: Request) {
       ],
       response_format: { type: "json_object" },
     });
+    logger.info(`SDK returned: ${JSON.stringify(baseCompletion).slice(0, 500)}`);
 
-    const basePromptOutput = baseCompletion.choices[0] || {};
+    const basePromptOutput = baseCompletion.choices?.[0] || ({} as any);
     const content = basePromptOutput.message?.content;
 
     logger.info("Interview questions generated successfully");
