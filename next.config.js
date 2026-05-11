@@ -11,10 +11,11 @@ const nextConfig = {
   },
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "img.clerk.com",
-      },
+      { protocol: "https", hostname: "img.clerk.com" },
+      { protocol: "https", hostname: "images.clerk.dev" },
+      { protocol: "https", hostname: "huanzhen-ai-interview.froge-ai.com" },
+      { protocol: "https", hostname: "huanzhen-ai-interview.vercel.app" },
+      { protocol: "https", hostname: "*.vercel.app" },
     ],
   },
   webpack: (webpackConfig, { webpack }) => {
