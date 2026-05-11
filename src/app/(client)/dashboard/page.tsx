@@ -148,9 +148,7 @@ function Interviews() {
                         </div>
                       </div>
                     </div>
-                    <p className="text-l text-center">
-                      升级套餐请联系 <span className="font-semibold">founders@folo-up.co</span>。
-                    </p>
+                    <p className="text-l text-center">升级套餐请联系系统管理员。</p>
                   </div>
                 </Modal>
               )}

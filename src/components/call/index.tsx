@@ -20,7 +20,7 @@ import { ResponseService } from "@/services/responses.service";
 import type { Interview } from "@/types/interview";
 import type { FeedbackData } from "@/types/response";
 import axios from "axios";
-import { AlarmClockIcon, ArrowUpRightSquareIcon, CheckCircleIcon, XCircleIcon } from "lucide-react";
+import { AlarmClockIcon, CheckCircleIcon, XCircleIcon } from "lucide-react";
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 import { RetellWebClient } from "retell-client-js-sdk";
@@ -528,20 +528,6 @@ function Call({ interview }: InterviewProps) {
             )}
           </div>
         </Card>
-        <a
-          className="flex flex-row justify-center align-middle mt-3"
-          href="https://folo-up.co/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <div className="text-center text-md font-semibold mr-2  ">
-            技术支持{" "}
-            <span className="font-bold">
-              Folo<span className="text-indigo-600">Up</span>
-            </span>
-          </div>
-          <ArrowUpRightSquareIcon className="h-[1.5rem] w-[1.5rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-indigo-500 " />
-        </a>
       </div>
     </div>
   );
