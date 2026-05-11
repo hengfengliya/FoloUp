@@ -64,13 +64,10 @@ function InterviewHome({ params, searchParams }: Props) {
   const [filterStatus, setFilterStatus] = useState<string>("ALL");
 
   const seeInterviewPreviewPage = () => {
-    const protocol = base_url?.includes("localhost") ? "http" : "https";
     if (interview?.url) {
-      const url = interview?.readable_slug
-        ? `${protocol}://${base_url}/call/${interview?.readable_slug}`
-        : interview.url.startsWith("http")
-          ? interview.url
-          : `https://${interview.url}`;
+      const url = interview.url.startsWith("http")
+        ? interview.url
+        : `https://${interview.url}`;
       window.open(url, "_blank");
     } else {
       console.error("Interview URL is null or undefined.");
@@ -518,11 +515,7 @@ function InterviewHome({ params, searchParams }: Props) {
       {isSharePopupOpen && (
         <SharePopup
           open={isSharePopupOpen}
-          shareContent={
-            interview?.readable_slug
-              ? `${base_url}/call/${interview?.readable_slug}`
-              : (interview?.url as string)
-          }
+          shareContent={interview?.url as string}
           onClose={closeSharePopup}
         />
       )}

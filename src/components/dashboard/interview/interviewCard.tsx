@@ -75,7 +75,7 @@ function InterviewCard({ name, interviewerId, id, url, readableSlug }: Props) {
 
   const copyToClipboard = () => {
     navigator.clipboard
-      .writeText(readableSlug ? `${base_url}/call/${readableSlug}` : (url as string))
+      .writeText(url as string)
       .then(
         () => {
           setCopied(true);
@@ -96,8 +96,7 @@ function InterviewCard({ name, interviewerId, id, url, readableSlug }: Props) {
   const handleJumpToInterview = (event: React.MouseEvent) => {
     event.stopPropagation();
     event.preventDefault();
-    const interviewUrl = readableSlug ? `/call/${readableSlug}` : `/call/${url}`;
-    window.open(interviewUrl, "_blank");
+    window.open(url, "_blank");
   };
 
   return (
