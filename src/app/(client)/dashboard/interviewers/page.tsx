@@ -41,9 +41,9 @@ function Interviewers() {
       <div className="flex flex-col items-left">
         <div className="flex flex-row mt-5">
           <div>
-            <h2 className="mr-2 text-2xl font-semibold tracking-tight mt-3">Interviewers</h2>
+            <h2 className="mr-2 text-2xl font-semibold tracking-tight mt-3">面试官</h2>
             <h3 className=" text-sm tracking-tight text-gray-600 font-medium ">
-              Get to know them by clicking the profile.
+              点击头像可查看面试官详情。
             </h3>
           </div>
         </div>

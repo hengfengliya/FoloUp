@@ -10,10 +10,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: "FoloUp",
-  description: "AI powered Interviews",
+  description: "AI 智能面试系统",
   openGraph: {
     title: "FoloUp",
-    description: "AI-powered Interviews",
+    description: "AI 智能面试系统",
     siteName: "FoloUp",
     images: [
       {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
         height: 600,
       },
     ],
-    locale: "en_US",
+    locale: "zh_CN",
     type: "website",
   },
 };
@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       <head>
         <link rel="icon" href="/browser-user-icon.ico" />
       </head>

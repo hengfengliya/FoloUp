@@ -74,7 +74,7 @@ function DataTable({ data, interviewId }: DataTableProps) {
             className={`w-full justify-start font-semibold text-[15px] mb-1 ${column.getIsSorted() ? "text-indigo-600" : "text-black"}`}
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Name
+            姓名
             <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
         );
@@ -99,7 +99,7 @@ function DataTable({ data, interviewId }: DataTableProps) {
                 </span>
               </TooltipTrigger>
               <TooltipContent side="top" className="bg-gray-500 text-white font-normal">
-                View Response
+                查看回答
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -122,7 +122,7 @@ function DataTable({ data, interviewId }: DataTableProps) {
             className={`w-full justify-start font-semibold text-[15px] mb-1 ${column.getIsSorted() ? "text-indigo-600" : "text-black"}`}
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Overall Score
+            综合评分
             <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
         );
@@ -148,7 +148,7 @@ function DataTable({ data, interviewId }: DataTableProps) {
             className={`w-full justify-start font-semibold text-[15px] mb-1 ${column.getIsSorted() ? "text-indigo-600" : "text-black"}`}
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Communication Score
+            沟通表达评分
             <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
         );
@@ -169,7 +169,7 @@ function DataTable({ data, interviewId }: DataTableProps) {
       accessorKey: "callSummary",
       header: () => (
         <div className="w-full justify-start font-semibold text-[15px] mb-1 text-black">
-          Summary
+          总结
         </div>
       ),
       cell: ({ row }) => {

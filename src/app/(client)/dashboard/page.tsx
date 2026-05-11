@@ -86,9 +86,9 @@ function Interviews() {
   return (
     <main className="p-8 pt-0 ml-12 mr-auto rounded-md">
       <div className="flex flex-col items-left">
-        <h2 className="mr-2 text-2xl font-semibold tracking-tight mt-8">My Interviews</h2>
+        <h2 className="mr-2 text-2xl font-semibold tracking-tight mt-8">我的面试</h2>
         <h3 className=" text-sm tracking-tight text-gray-600 font-medium ">
-          Start getting responses now!
+          立即开始收集候选人的面试结果！
         </h3>
         <div className="relative flex items-center mt-1 flex-wrap">
           {currentPlan === "free_trial_over" ? (
@@ -98,7 +98,7 @@ function Interviews() {
                   <Plus size={90} strokeWidth={0.5} className="text-gray-700" />
                 </div>
                 <CardTitle className="p-0 text-md text-center">
-                  You cannot create any more interviews unless you upgrade
+                  当前套餐已达上限，升级后才能继续创建面试
                 </CardTitle>
               </CardContent>
             </Card>
@@ -115,16 +115,15 @@ function Interviews() {
                     <div className="flex justify-center text-indigo-600">
                       <Gem />
                     </div>
-                    <h3 className="text-xl font-semibold text-center">Upgrade to Pro</h3>
+                    <h3 className="text-xl font-semibold text-center">升级到专业版</h3>
                     <p className="text-l text-center">
-                      You have reached your limit for the free trial. Please upgrade to pro to
-                      continue using our features.
+                      您已达到免费试用的使用上限。请升级到专业版以继续使用全部功能。
                     </p>
                     <div className="grid grid-cols-2 gap-2">
                       <div className="flex justify-center items-center">
                         <Image
                           src={"/premium-plan-icon.png"}
-                          alt="Graphic"
+                          alt="升级套餐插图"
                           width={299}
                           height={300}
                         />
@@ -132,26 +131,25 @@ function Interviews() {
 
                       <div className="grid grid-rows-2 gap-2">
                         <div className="p-4 border rounded-lg">
-                          <h4 className="text-lg font-medium">Free Plan</h4>
+                          <h4 className="text-lg font-medium">免费版</h4>
                           <ul className="list-disc pl-5 mt-2">
-                            <li>10 Responses</li>
-                            <li>Basic Support</li>
-                            <li>Limited Features</li>
+                            <li>10 次面试响应</li>
+                            <li>基础支持</li>
+                            <li>功能受限</li>
                           </ul>
                         </div>
                         <div className="p-4 border rounded-lg">
-                          <h4 className="text-lg font-medium">Pro Plan</h4>
+                          <h4 className="text-lg font-medium">专业版</h4>
                           <ul className="list-disc pl-5 mt-2">
-                            <li>Flexible Pay-Per-Response</li>
-                            <li>Priority Support</li>
-                            <li>All Features</li>
+                            <li>按面试响应灵活计费</li>
+                            <li>优先支持</li>
+                            <li>全部功能</li>
                           </ul>
                         </div>
                       </div>
                     </div>
                     <p className="text-l text-center">
-                      Contact <span className="font-semibold">founders@folo-up.co</span> to upgrade
-                      your plan.
+                      升级套餐请联系 <span className="font-semibold">founders@folo-up.co</span>。
                     </p>
                   </div>
                 </Modal>

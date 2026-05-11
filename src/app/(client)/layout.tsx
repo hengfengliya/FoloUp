@@ -14,10 +14,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 const metadata = {
   title: "FoloUp",
-  description: " AI-powered Interviews",
+  description: "AI 智能面试系统",
   openGraph: {
     title: "FoloUp",
-    description: "AI-powered Interviews",
+    description: "AI 智能面试系统",
     siteName: "FoloUp",
     images: [
       {
@@ -26,7 +26,7 @@ const metadata = {
         height: 600,
       },
     ],
-    locale: "en_US",
+    locale: "zh_CN",
     type: "website",
   },
 };
@@ -40,7 +40,7 @@ export default function RootLayout({
   const isAuthRoute = pathname.includes("/sign-in") || pathname.includes("/sign-up");
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="zh-CN" suppressHydrationWarning>
       <head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />

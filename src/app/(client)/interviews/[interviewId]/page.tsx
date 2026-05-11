@@ -164,15 +164,15 @@ function InterviewHome({ params, searchParams }: Props) {
         resolvedParams.interviewId,
       );
 
-      toast.success("Interview status updated", {
-        description: `The interview is now ${updatedIsActive ? "active" : "inactive"}.`,
+      toast.success("面试状态已更新", {
+        description: `当前面试已${updatedIsActive ? "开启" : "关闭"}。`,
         position: "bottom-right",
         duration: 3000,
       });
     } catch (error) {
       console.error(error);
-      toast.error("Error", {
-        description: "Failed to update the interview status.",
+      toast.error("出错了", {
+        description: "更新面试状态失败。",
         duration: 3000,
       });
     }
@@ -182,14 +182,14 @@ function InterviewHome({ params, searchParams }: Props) {
     try {
       await InterviewService.updateInterview({ theme_color: newColor }, resolvedParams.interviewId);
 
-      toast.success("Theme color updated", {
+      toast.success("主题色已更新", {
         position: "bottom-right",
         duration: 3000,
       });
     } catch (error) {
       console.error(error);
-      toast.error("Error", {
-        description: "Failed to update the theme color.",
+      toast.error("出错了", {
+        description: "更新主题色失败。",
         duration: 3000,
       });
     }
@@ -271,7 +271,7 @@ function InterviewHome({ params, searchParams }: Props) {
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent className="bg-zinc-300" side="bottom" sideOffset={4}>
-                  <span className="text-black flex flex-row gap-4">Share</span>
+                  <span className="text-black flex flex-row gap-4">分享</span>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -289,7 +289,7 @@ function InterviewHome({ params, searchParams }: Props) {
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent className="bg-zinc-300" side="bottom" sideOffset={4}>
-                  <span className="text-black flex flex-row gap-4">Preview</span>
+                  <span className="text-black flex flex-row gap-4">预览</span>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -307,7 +307,7 @@ function InterviewHome({ params, searchParams }: Props) {
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent className="bg-zinc-300" side="bottom" sideOffset={4}>
-                  <span className="text-black flex flex-row gap-4">Theme Color</span>
+                  <span className="text-black flex flex-row gap-4">主题色</span>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -324,7 +324,7 @@ function InterviewHome({ params, searchParams }: Props) {
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent className="bg-zinc-300" side="bottom" sideOffset={4}>
-                  <span className="text-black flex flex-row gap-4">Edit</span>
+                  <span className="text-black flex flex-row gap-4">编辑</span>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -332,18 +332,18 @@ function InterviewHome({ params, searchParams }: Props) {
             <div className="inline-flex cursor-pointer">
               {currentPlan === "free_trial_over" ? (
                 <>
-                  <span className="ms-3 my-auto text-sm">Inactive</span>
+                  <span className="ms-3 my-auto text-sm">已关闭</span>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipContent className="bg-zinc-300" side="bottom" sideOffset={4}>
-                        Upgrade your plan to reactivate
+                        升级套餐后可重新启用
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
                 </>
               ) : (
                 <>
-                  <span className="ms-3 my-auto text-sm">Active</span>
+                  <span className="ms-3 my-auto text-sm">已开启</span>
                   <Switch
                     checked={isActive}
                     className={`ms-3 my-auto ${isActive ? "bg-indigo-600" : "bg-[#E6E7EB]"}`}
@@ -363,37 +363,37 @@ function InterviewHome({ params, searchParams }: Props) {
                 >
                   <SelectTrigger className="w-[95%] bg-slate-100 rounded-lg">
                     <Filter size={18} className=" text-slate-400" />
-                    <SelectValue placeholder="Filter By" />
+                    <SelectValue placeholder="按状态筛选" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value={CandidateStatus.NO_STATUS}>
                       <div className="flex items-center">
                         <div className="w-3 h-3 bg-gray-400 rounded-full mr-2" />
-                        No Status
+                        未评估
                       </div>
                     </SelectItem>
                     <SelectItem value={CandidateStatus.NOT_SELECTED}>
                       <div className="flex items-center">
                         <div className="w-3 h-3 bg-red-500 rounded-full mr-2" />
-                        Not Selected
+                        不录用
                       </div>
                     </SelectItem>
                     <SelectItem value={CandidateStatus.POTENTIAL}>
                       <div className="flex items-center">
                         <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2" />
-                        Potential
+                        待定
                       </div>
                     </SelectItem>
                     <SelectItem value={CandidateStatus.SELECTED}>
                       <div className="flex items-center">
                         <div className="w-3 h-3 bg-green-500 rounded-full mr-2" />
-                        Selected
+                        录用
                       </div>
                     </SelectItem>
                     <SelectItem value="ALL">
                       <div className="flex items-center">
                         <div className="w-3 h-3 border-2 border-gray-300 rounded-full mr-2" />
-                        All
+                        全部
                       </div>
                     </SelectItem>
                   </SelectContent>
@@ -431,7 +431,7 @@ function InterviewHome({ params, searchParams }: Props) {
                         <div className="flex items-center justify-between w-full">
                           <div className="flex flex-col my-auto">
                             <p className="font-medium mb-[2px]">
-                              {response?.name ? `${response?.name}'s Response` : "Anonymous"}
+                              {response?.name ? `${response?.name} 的回答` : "匿名候选人"}
                             </p>
                             <p className="">
                               {formatTimestampToDateHHMM(String(response?.created_at))}
@@ -465,7 +465,7 @@ function InterviewHome({ params, searchParams }: Props) {
                                         sideOffset={4}
                                       >
                                         <span className="text-white font-normal flex flex-row gap-4">
-                                          Overall Score
+                                          综合评分
                                         </span>
                                       </TooltipContent>
                                     </Tooltip>
@@ -478,7 +478,7 @@ function InterviewHome({ params, searchParams }: Props) {
                     </button>
                   ))
                 ) : (
-                  <p className="text-center text-gray-500">No responses to display</p>
+                  <p className="text-center text-gray-500">暂无候选人回答</p>
                 )}
               </ScrollArea>
             </div>
@@ -502,7 +502,7 @@ function InterviewHome({ params, searchParams }: Props) {
       )}
       <Modal open={showColorPicker} closeOnOutsideClick={false} onClose={applyColorChange}>
         <div className="w-[250px] p-3">
-          <h3 className="text-lg font-semibold mb-4 text-center">Choose a Theme Color</h3>
+          <h3 className="text-lg font-semibold mb-4 text-center">选择主题色</h3>
           <ChromePicker
             disableAlpha={true}
             color={themeColor}

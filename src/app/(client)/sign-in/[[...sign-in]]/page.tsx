@@ -8,13 +8,13 @@ function SignInPage() {
       </div>
       <div className="block md:hidden px-3 h-[60%] my-auto">
         <h1 className="text-2xl font-bold text-center text-gray-800">
-          Welcome to Folo<span className="text-indigo-600">Up</span>
+          欢迎使用 Folo<span className="text-indigo-600">Up</span>
         </h1>
         <h1 className="text-md my-3 text-center text-gray-800">
-          Mobile version is currently under construction. 🚧
+          移动端版本仍在开发中。🚧
         </h1>
         <p className="text-center text-gray-600 mt-3">
-          Please sign in using a PC for the best experience. Sorry for the inconvenience.
+          为获得最佳体验，请使用电脑登录。给您带来的不便敬请谅解。
         </p>
       </div>
     </div>
