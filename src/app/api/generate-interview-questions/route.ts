@@ -44,8 +44,20 @@ export async function POST(req: Request) {
       { status: 200 },
     );
   } catch (error) {
-    logger.error("Error generating interview questions");
+    const err = error as any;
+    const detail = {
+      message: err?.message,
+      name: err?.name,
+      status: err?.status,
+      code: err?.code,
+      causeMessage: err?.cause?.message,
+      responseBody:
+        typeof err?.response?.data === "string"
+          ? err.response.data.slice(0, 300)
+          : JSON.stringify(err?.response?.data || err?.error || {}).slice(0, 300),
+    };
+    logger.error(`Error generating interview questions: ${JSON.stringify(detail)}`);
 
-    return NextResponse.json({ error: "internal server error" }, { status: 500 });
+    return NextResponse.json({ error: "internal server error", detail }, { status: 500 });
   }
 }
