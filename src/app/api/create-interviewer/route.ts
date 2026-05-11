@@ -10,8 +10,10 @@ const retellClient = new Retell({
 
 export async function GET(res: NextRequest) {
   logger.info("create-interviewer request received");
+  logger.info(`RETELL_API_KEY length: ${(process.env.RETELL_API_KEY || "").length}`);
 
   try {
+    logger.info("Step 1: creating retell LLM...");
     const newModel = await retellClient.llm.create({
       model: "gpt-4o",
       general_prompt: RETELL_AGENT_GENERAL_PROMPT,
@@ -24,34 +26,39 @@ export async function GET(res: NextRequest) {
         },
       ],
     });
+    logger.info(`Step 1 OK: llm_id=${newModel.llm_id}`);
 
-    // Create Lisa
+    logger.info("Step 2: creating Lisa agent...");
     const newFirstAgent = await retellClient.agent.create({
       response_engine: { llm_id: newModel.llm_id, type: "retell-llm" },
       voice_id: "minimax-May",
       agent_name: "Lisa",
       language: "zh-CN",
     });
+    logger.info(`Step 2 OK: agent_id=${newFirstAgent.agent_id}`);
 
+    logger.info("Step 3: saving Lisa to supabase...");
     const newInterviewer = await InterviewerService.createInterviewer({
       agent_id: newFirstAgent.agent_id,
       ...INTERVIEWERS.LISA,
     });
+    logger.info(`Step 3 OK: ${JSON.stringify(newInterviewer)?.slice(0, 100)}`);
 
-    // Create Bob
+    logger.info("Step 4: creating Bob agent...");
     const newSecondAgent = await retellClient.agent.create({
       response_engine: { llm_id: newModel.llm_id, type: "retell-llm" },
       voice_id: "minimax-Kevin",
       agent_name: "Bob",
       language: "zh-CN",
     });
+    logger.info(`Step 4 OK: agent_id=${newSecondAgent.agent_id}`);
 
+    logger.info("Step 5: saving Bob to supabase...");
     const newSecondInterviewer = await InterviewerService.createInterviewer({
       agent_id: newSecondAgent.agent_id,
       ...INTERVIEWERS.BOB,
     });
-
-    logger.info("");
+    logger.info(`Step 5 OK: ${JSON.stringify(newSecondInterviewer)?.slice(0, 100)}`);
 
     return NextResponse.json(
       {
