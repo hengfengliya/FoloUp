@@ -61,8 +61,13 @@ export async function GET(res: NextRequest) {
       { status: 200 },
     );
   } catch (error) {
-    logger.error("Error creating interviewers:");
+    const err = error as Error;
+    logger.error(`Error creating interviewers: ${err?.message || String(error)}`);
+    console.error("create-interviewer full error:", error);
 
-    return NextResponse.json({ error: "Failed to create interviewers" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to create interviewers", detail: err?.message || String(error) },
+      { status: 500 },
+    );
   }
 }
