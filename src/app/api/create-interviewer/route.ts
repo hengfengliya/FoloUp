@@ -68,12 +68,22 @@ export async function GET(res: NextRequest) {
       { status: 200 },
     );
   } catch (error) {
-    const err = error as Error;
-    logger.error(`Error creating interviewers: ${err?.message || String(error)}`);
-    console.error("create-interviewer full error:", error);
+    const err = error as any;
+    const cause = err?.cause;
+    const detail = {
+      message: err?.message || String(error),
+      name: err?.name,
+      status: err?.status,
+      code: err?.code,
+      causeMessage: cause?.message,
+      causeCode: cause?.code,
+      causeErrno: cause?.errno,
+      stack: err?.stack?.split("\n").slice(0, 5).join(" | "),
+    };
+    logger.error(`Error creating interviewers: ${JSON.stringify(detail)}`);
 
     return NextResponse.json(
-      { error: "Failed to create interviewers", detail: err?.message || String(error) },
+      { error: "Failed to create interviewers", detail },
       { status: 500 },
     );
   }
