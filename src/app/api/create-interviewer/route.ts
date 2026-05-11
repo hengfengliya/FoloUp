@@ -28,8 +28,9 @@ export async function GET(res: NextRequest) {
     // Create Lisa
     const newFirstAgent = await retellClient.agent.create({
       response_engine: { llm_id: newModel.llm_id, type: "retell-llm" },
-      voice_id: "11labs-Chloe",
+      voice_id: "minimax-May",
       agent_name: "Lisa",
+      language: "zh-CN",
     });
 
     const newInterviewer = await InterviewerService.createInterviewer({
@@ -40,8 +41,9 @@ export async function GET(res: NextRequest) {
     // Create Bob
     const newSecondAgent = await retellClient.agent.create({
       response_engine: { llm_id: newModel.llm_id, type: "retell-llm" },
-      voice_id: "11labs-Brian",
+      voice_id: "minimax-Kevin",
       agent_name: "Bob",
+      language: "zh-CN",
     });
 
     const newSecondInterviewer = await InterviewerService.createInterviewer({

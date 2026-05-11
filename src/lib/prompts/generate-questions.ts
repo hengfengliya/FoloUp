@@ -1,5 +1,5 @@
 export const SYSTEM_PROMPT =
-  "You are an expert in coming up with follow up questions to uncover deeper insights.";
+  "You are an expert in coming up with follow up questions to uncover deeper insights. 请使用简体中文输出所有问题和描述文本（JSON 字段名保持英文不变）。";
 
 export const generateQuestionsPrompt = (body: {
   name: string;
@@ -27,6 +27,8 @@ Moreover generate a 50 word or less second-person description about the intervie
 Do not use the exact objective in the description. Remember that some details are not be shown to the user. It should be a small description for the
 user to understand what the content of the interview would be. Make sure it is clear to the respondent who's taking the interview.
 
-The field 'questions' should take the format of an array of objects with the following key: question. 
+The field 'questions' should take the format of an array of objects with the following key: question.
 
-Strictly output only a JSON object with the keys 'questions' and 'description'.`;
+Strictly output only a JSON object with the keys 'questions' and 'description'.
+
+重要：请使用简体中文生成所有问题（question 字段的值）和描述（description 字段的值）。JSON 中的字段名（如 "questions"、"description"、"question"）必须保持英文原样，不要翻译。整体语气保持专业而亲切，符合中文求职面试场景的习惯表达，避免机翻腔。`;

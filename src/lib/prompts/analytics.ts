@@ -1,5 +1,5 @@
 export const SYSTEM_PROMPT =
-  "You are an expert in analyzing interview transcripts. You must only use the main questions provided and not generate or infer additional questions.";
+  "You are an expert in analyzing interview transcripts. You must only use the main questions provided and not generate or infer additional questions. 请使用简体中文输出所有评分反馈、问题总结和软技能描述（JSON 字段名保持英文不变）。";
 
 export const getInterviewAnalyticsPrompt = (
   interviewTranscript: string,
@@ -28,17 +28,17 @@ Based on this transcript and the provided main interview questions, generate the
    - Consistency: Evaluate if the interviewee's answers are consistent throughout the interview or if they contradict themselves.
    - Adaptability: Assess how well the interviewee adapts to different types of questions, including unexpected or challenging ones.
 
-2. Communication Skills: Score (0-10) and Feedback (60 words). Rating system and guidleines for communication skills is as follwing.
-    - 10: Fully operational command, use of English is appropriate, accurate, fluent, shows complete understanding.
-    - 09: Fully operational command with occasional inaccuracies and inappropriate usage. May misunderstand unfamiliar situations but handles complex arguments well.
-    - 08: Operational command with occasional inaccuracies, inappropriate usage, and misunderstandings. Handles complex language and detailed reasoning well.
-    - 07: Effective command despite some inaccuracies, inappropriate usage, and misunderstandings. Can use and understand reasonably complex language, especially in familiar situations.
-    - 06: Partial command, copes with overall meaning, frequent mistakes. Handles basic communication in their field.
-    - 05: Basic competence limited to familiar situations with frequent problems in understanding and expression.
-    - 04: Understands only general meaning in very familiar situations, with frequent communication breakdowns.
-    - 03: Has great difficulty understanding spoken English.
-    - 02: Has no ability to use the language except a few isolated words.
-    - 01: Did not answer the questions.
+2. Communication Skills: Score (0-10) and Feedback (60 words). Rating system and guidelines for communication skills is as following (评估候选人使用中文进行表达和沟通的能力).
+    - 10: 完全熟练的语言运用，措辞得体、准确、流畅，表现出完全的理解能力。
+    - 09: 完全熟练的语言运用，偶有不准确或表述不当；面对陌生场景可能出现误解，但能很好地处理复杂论述。
+    - 08: 可熟练运用语言，偶有不准确、表述不当或误解；能很好地处理复杂语言和详细推理。
+    - 07: 语言运用有效，尽管存在一些不准确、表述不当或误解；在熟悉场景下能够使用并理解相对复杂的语言。
+    - 06: 部分掌握语言，能把握整体意思，但错误较多；在自己熟悉的领域可以完成基本沟通。
+    - 05: 仅具备基本沟通能力，局限于熟悉场景，理解和表达上经常出现问题。
+    - 04: 仅能在非常熟悉的场景下理解大致意思，沟通经常中断。
+    - 03: 在听懂口头表达上存在很大困难。
+    - 02: 几乎无法使用该语言，仅能使用零星的几个词。
+    - 01: 未回答任何问题。
 3. Summary for each main interview question: ${mainInterviewQuestions}
    - Use ONLY the main questions provided, it should output all the questions with the numbers even if it's not found in the transcript.
    - Follow the below rules when outputing the question and summary
@@ -59,4 +59,12 @@ Ensure the output is in valid JSON format with the following structure:
   "softSkillSummary: string
 }
 
-IMPORTANT: Only use the main questions provided. Do not generate or infer additional questions such as follow-up questions.`;
+IMPORTANT: Only use the main questions provided. Do not generate or infer additional questions such as follow-up questions.
+
+重要：请使用简体中文撰写以下所有文本内容：
+- overallFeedback（整体反馈）
+- communication.feedback（沟通能力反馈）
+- questionSummaries[].summary（每个问题的总结，包括"Not Asked"翻译为"未提问"、"Not Answered"翻译为"未回答"）
+- softSkillSummary（软技能总结）
+
+JSON 字段名（overallScore、overallFeedback、communication、score、feedback、questionSummaries、question、summary、softSkillSummary）必须保持英文原样。questionSummaries 数组中的 question 字段应原样保留主问题文本（不做改动）。所有中文输出语气专业、结论清晰，避免机翻腔。`;
