@@ -13,17 +13,17 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 const metadata = {
-  title: "FoloUp",
-  description: "AI 智能面试系统",
+  title: "焕贞 AI 面试",
+  description: "焕贞医美 AI 智能面试系统",
   openGraph: {
-    title: "FoloUp",
-    description: "AI 智能面试系统",
-    siteName: "FoloUp",
+    title: "焕贞 AI 面试",
+    description: "焕贞医美 AI 智能面试系统",
+    siteName: "焕贞医美",
     images: [
       {
-        url: "/foloup.png",
+        url: "/brand/huanzhen-logo-square.jpg",
         width: 800,
-        height: 600,
+        height: 800,
       },
     ],
     locale: "zh_CN",
