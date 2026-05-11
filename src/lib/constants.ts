@@ -28,7 +28,7 @@ export const INTERVIEWERS = {
     image: "/interviewers/Lisa.png",
     description:
       "你好，我是莉莎，一位充满好奇心、擅长深挖的面试官。我会通过层层追问，循序渐进地了解你的经历与思路，帮你把真实的能力与思考完整呈现出来。",
-    audio: "Lisa.wav",
+    audio: "Lisa.mp3",
   },
   BOB: {
     name: "鲍勃（共情型）",
@@ -39,6 +39,6 @@ export const INTERVIEWERS = {
     image: "/interviewers/Bob.png",
     description:
       "你好，我是鲍勃，一位以倾听为主的共情型面试官。我会专注理解你的处境与感受，营造放松的对话氛围，让你能从容、真实地表达自己。",
-    audio: "Bob.wav",
+    audio: "Bob.mp3",
   },
 };
